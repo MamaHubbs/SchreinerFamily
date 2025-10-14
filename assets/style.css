@@ -115,8 +115,46 @@ footer {
     background-color: #00796b; /* Lighter teal on hover/active */
 }
 
-/* ===== Family History Photo Styles ===== */
+/* ===== General Typography for Family History Pages ===== */
+article {
+  line-height: 1.7;
+  color: #222;
+  font-family: "Georgia", "Times New Roman", serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
+article h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+article h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
+article p {
+  margin: 1rem 0;
+}
+
+article ul {
+  margin: 1rem 0 1rem 1.5rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Photo Layouts ===== */
+
+/* Shared styles for both paired and single photo sections */
 .photo-pair,
 .single-photo {
   display: flex;
@@ -124,14 +162,14 @@ footer {
   gap: 1.5rem;
   justify-content: center;
   margin: 2rem 0;
-  background-color: #fafafa; /* soft neutral background */
-  border: 1px solid #ddd; /* light border frame */
+  background-color: #fafafa;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Photo-pair layout */
+/* Two-photo layout */
 .photo-pair figure {
   flex: 1 1 200px;
   max-width: 260px;
@@ -145,18 +183,34 @@ footer {
   text-align: center;
 }
 
-.single-photo img,
-.photo-pair img {
+/* Shared image styling */
+.photo-pair img,
+.single-photo img {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Captions */
 .photo-pair figcaption,
 .single-photo figcaption {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #555;
+  font-style: italic;
+}
+
+/* ===== Footnotes Section ===== */
+#footnotes {
+  border-top: 1px solid #ddd;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#footnotes ol {
+  margin-left: 1.5rem;
 }
 
