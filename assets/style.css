@@ -1,1 +1,68 @@
+/* --- Global Styles --- */
+body {
+    font-family: Georgia, serif; /* A traditional, readable font */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Light gray background */
+    color: #333;
+}
 
+header {
+    background-color: #004d40; /* Dark teal/green */
+    color: white;
+    padding: 20px 5%;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 2.5em;
+    border-bottom: 1px solid #77a; /* Subtle divider */
+    padding-bottom: 10px;
+}
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+footer {
+    background-color: #e0e0e0; /* Light footer background */
+    color: #666;
+    text-align: center;
+    padding: 15px 5%;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* --- Navigation Styles --- */
+#main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex; /* Arrange links horizontally */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+#main-nav li {
+    margin: 0 15px;
+}
+
+#main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#main-nav a:hover, #main-nav a.active {
+    background-color: #00796b; /* Lighter teal on hover/active */
+}
