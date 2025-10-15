@@ -418,6 +418,22 @@ html {
   font-style: italic;
 }
 
+/* Normalize portrait-grid image heights (with gentle crop) */
+.portrait-grid.equal-heights img {
+  width: 100%;
+  height: 360px;           /* set the common height */
+  object-fit: cover;       /* fills the box, crops edges if needed */
+  display: block;          /* removes inline whitespace */
+  border-radius: 8px;      /* keep your rounded corners */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 700px) {
+  .portrait-grid.equal-heights img {
+    height: 260px;         /* shorter on small screens */
+  }
+}
+
 /* ===== Footnotes Section ===== */
 #footnotes {
   border-top: 1px solid #ddd;
