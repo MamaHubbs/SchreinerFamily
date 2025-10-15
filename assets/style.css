@@ -477,6 +477,30 @@ html {
   text-align: center;
 }
 
+/* Portrait grid: support a CSS variable height + crop/no-crop toggle */
+.portrait-grid.equal-heights { --pg-height: 360px; } /* default */
+
+.portrait-grid.equal-heights img {
+  width: 100%;
+  height: var(--pg-height);
+  object-fit: cover;         /* crops to fill by default */
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* No-crop variant: show full image (letterbox if needed) */
+.portrait-grid.equal-heights.nocrop img {
+  object-fit: contain;       /* overrides cover */
+  background: #fff;          /* behind letterbox bars */
+}
+
+/* Responsive tweak (optional) */
+@media (max-width: 700px) {
+  .portrait-grid.equal-heights { --pg-height: 260px; }
+}
+
+
 /* reusable lightbox overlay */
 #lb-overlay {
   position: fixed; inset: 0;
