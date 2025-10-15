@@ -477,6 +477,22 @@ html {
   text-align: center;
 }
 
+/* reusable lightbox overlay */
+#lb-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none; align-items: center; justify-content: center;
+  padding: 2rem; z-index: 10000;
+}
+#lb-overlay img { max-width: 95vw; max-height: 90vh; border-radius: 8px; }
+#lb-overlay.open { display: flex; }
+#lb-overlay .lb-close {
+  position: fixed; top: 1rem; right: 1rem;
+  font: 700 1.2rem/1 system-ui, sans-serif;
+  color: #fff; text-decoration: none; background: rgba(0,0,0,.35);
+  padding: .45rem .7rem; border-radius: 6px; cursor: pointer;
+}
+
 /* Responsive tweak: lower the target height on small screens */
 @media (max-width: 700px) {
   .photo-pair.equal-heights { --pair-height: 300px; }
