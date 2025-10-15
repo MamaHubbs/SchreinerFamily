@@ -48,5 +48,45 @@
     <footer>
         <p>Family History Project - SchreinerFamily | Info Compiled by Roger Schreiner (2008) | Website by Megan (Schreiner) Hubbard</p>
     </footer>
+
+<div id="lb-overlay" aria-modal="true" role="dialog" aria-hidden="true">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <img alt="">
+</div>
+
+       <script>
+(function() {
+  const overlay = document.getElementById('lb-overlay');
+  const bigImg  = overlay.querySelector('img');
+  const closeBtn= overlay.querySelector('.lb-close');
+
+  function open(src, alt) {
+    bigImg.src = src; bigImg.alt = alt || '';
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+    bigImg.src = ''; document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('img[data-full]');
+    if (!t) return;
+    e.preventDefault();
+    open(t.getAttribute('data-full') || t.src, t.alt);
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close(); // click backdrop
+  });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+    
 </body>
 </html>
