@@ -283,6 +283,35 @@ html {
   }
 }
 
+/* Tighter spacing between photos */
+.portrait-grid {
+  gap: 0.5rem; /* was 1rem */
+}
+
+/* Remove default figure margin + trim card padding */
+.portrait-grid figure {
+  margin: 0;         /* kill default browser margin */
+  padding: 0.35rem;  /* was 0.5rem */
+  border-radius: 6px;
+}
+
+/* Make sure images don't add whitespace */
+.portrait-grid img {
+  display: block;    /* removes inline whitespace */
+  width: 100%;
+  height: auto;
+}
+
+/* Tighten caption spacing */
+.portrait-grid figcaption {
+  margin-top: 0.35rem;
+  line-height: 1.3;
+}
+
+.portrait-grid.tight { gap: 0.35rem; }
+.portrait-grid.tight figure { padding: 0.25rem; }
+
+
 /* ===== Small inline portrait next to list items ===== */
 .child-inline {
   display: grid;
