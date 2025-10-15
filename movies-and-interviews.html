@@ -77,43 +77,102 @@
         <p>Family History Project - SchreinerFamily | Info compiled by Roger Schreiner (2008) | Website by Megan (Schreiner) Hubbard</p>
     </footer>
 
+<!-- Lightbox overlay (images & video) -->
 <div id="lb-overlay" aria-modal="true" role="dialog" aria-hidden="true">
   <button class="lb-close" aria-label="Close">✕</button>
-  <img alt="">
+  <div id="lb-content"></div>
 </div>
 
-       <script>
-(function() {
-  const overlay = document.getElementById('lb-overlay');
-  const bigImg  = overlay.querySelector('img');
-  const closeBtn= overlay.querySelector('.lb-close');
+<style>
+  #lb-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.85);
+    display: none; align-items: center; justify-content: center;
+    padding: 2rem; z-index: 10000;
+  }
+  #lb-overlay.open { display: flex; }
+  #lb-content img, #lb-content video {
+    max-width: 95vw; max-height: 90vh; border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.4);
+    display: block;
+    background: #000;
+  }
+  #lb-overlay .lb-close {
+    position: fixed; top: 1rem; right: 1rem;
+    font: 700 1.2rem/1 system-ui, sans-serif;
+    color: #fff; text-decoration: none; background: rgba(0,0,0,.35);
+    padding: .45rem .7rem; border-radius: 6px; cursor: pointer;
+  }
 
-  function open(src, alt) {
-    bigImg.src = src; bigImg.alt = alt || '';
-    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+  /* Optional “play” badge for video thumbnails */
+  .video-thumb {
+    position: relative; display: inline-block;
+  }
+  .video-thumb::after {
+    content: "▶"; position: absolute; inset: 0; margin: auto;
+    width: 56px; height: 56px; line-height: 56px; text-align: center;
+    color: #fff; background: rgba(0,0,0,.45);
+    border-radius: 50%; font-size: 26px;
+    transform: translateZ(0);
+  }
+</style>
+
+<script>
+(function () {
+  const overlay  = document.getElementById('lb-overlay');
+  const content  = document.getElementById('lb-content');
+  const closeBtn = overlay.querySelector('.lb-close');
+
+  function openWith(el) {
+    // Clear previous content
+    content.innerHTML = '';
+    const isVideo = el.hasAttribute('data-fullvideo');
+    if (isVideo) {
+      const src = el.getAttribute('data-fullvideo');
+      const poster = el.getAttribute('data-poster') || '';
+      const v = document.createElement('video');
+      v.src = src;
+      v.controls = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.poster = poster;
+      v.setAttribute('controlsList', 'nodownload');
+      content.appendChild(v);
+    } else {
+      const src = el.getAttribute('data-full') || el.src;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = el.alt || '';
+      content.appendChild(img);
+    }
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
+
   function close() {
-    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
-    bigImg.src = ''; document.body.style.overflow = '';
+    // Pause video if present
+    const vid = content.querySelector('video');
+    if (vid) { try { vid.pause(); } catch(e){} }
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    content.innerHTML = '';
+    document.body.style.overflow = '';
   }
 
+  // Click any image/video thumbnail with data-full or data-fullvideo
   document.addEventListener('click', (e) => {
-    const t = e.target.closest('img[data-full]');
+    const t = e.target.closest('img[data-full], img[data-fullvideo]');
     if (!t) return;
     e.preventDefault();
-    open(t.getAttribute('data-full') || t.src, t.alt);
+    openWith(t);
   });
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) close(); // click backdrop
-  });
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
   closeBtn.addEventListener('click', close);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') close();
-  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();
 </script>
+
 
        
 </body>
