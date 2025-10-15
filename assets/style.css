@@ -258,6 +258,31 @@ html {
   font-style: italic;
 }
 
+/* Make portrait-grid cards larger + tighter */
+.portrait-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* was 180px */
+  gap: 1rem; /* tighter gaps */
+}
+.portrait-grid figure {
+  padding: 0.5rem;           /* was 0.75rem */
+  border-radius: 8px;        /* slightly tighter */
+}
+.portrait-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Optional jumbo grid */
+.portrait-grid.large {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+@media (min-width: 1200px) {
+  .portrait-grid.large {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+
 /* ===== Small inline portrait next to list items ===== */
 .child-inline {
   display: grid;
