@@ -434,6 +434,54 @@ html {
   }
 }
 
+/* ===== Equal-height images inside .photo-pair ===== */
+/* Set a default target height via a CSS variable so you can tweak per section */
+.photo-pair.equal-heights { --pair-height: 420px; }
+
+/* Crop variant: tidy, masonry-style look */
+.photo-pair.equal-heights img {
+  width: 100%;
+  height: var(--pair-height);
+  object-fit: cover;            /* crops edges as needed */
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* No-crop variant: keeps full image, may letterbox */
+.photo-pair.equal-heights.nocrop img {
+  object-fit: contain;          /* overrides 'cover' above */
+  background: #fff;             /* fills letterbox area */
+}
+
+/* Make captions sit tight under equal-height images */
+.photo-pair.equal-heights figcaption {
+  margin-top: 0.4rem;
+  line-height: 1.35;
+}
+
+/* Ensure both figures stretch evenly */
+.photo-pair.equal-heights {
+  align-items: stretch;         /* figures get same height box */
+}
+.photo-pair.equal-heights figure {
+  flex: 1 1 260px;              /* keep them balanced on wrap */
+  display: flex;
+  flex-direction: column;
+}
+.photo-pair.equal-heights figure > img {
+  flex: 0 0 auto;               /* image is fixed-height */
+}
+.photo-pair.equal-heights figure > figcaption {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+/* Responsive tweak: lower the target height on small screens */
+@media (max-width: 700px) {
+  .photo-pair.equal-heights { --pair-height: 300px; }
+}
+
 /* ===== Footnotes Section ===== */
 #footnotes {
   border-top: 1px solid #ddd;
