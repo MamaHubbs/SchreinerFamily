@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roger's Family</title>
+    <link rel="stylesheet" href="../assets/style.css"> 
+</head>
+<body>
+    <header>
+        <h1>The Schreiner Family History</h1>
+        
+        <nav id="main-nav">
+            <ul>
+                <li><a href="../index.html">Home / Introduction</a></li>
+                <li><a href="../early-life/adam-early-years.html">Early Life & Germany</a></li>
+                <li><a href="../american-journey/moving-to-usa.html">The American Journey</a></li>
+                <li><a href="../upstate-ny/wittenberg-years.html">Life in Upstate New York</a></li>
+                <li><a href="../retirement/florida-years.html">Retirement & Later Years</a></li>
+                <li><a href="../family-ancestry/schreiner-family.html">Family & Ancestry</a></li>
+                <li><a href="../resources/contact.html">Resources & Contact</a></li>
+                <li><a href="../movies-and-interviews.html">Movies & Interviews</a></li>
+                <li><a href="../later-generations.html" class="active">Later Generations of Schreiners</a></li>
+            </ul>
+        </nav>
+    </header>
+     <div class="content-wrapper">
+     
+    <nav class="sub-nav">
+    <h3>Future Generations (The Sons)</h3>
+    <ul>
+        <li><a href="egons-family.html">Egon's Family</a></li>
+        <li><a href="freds-family.html">Fred's Family</a></li>
+        <li><a href="rogers-family.html" class="active">Roger's Family</a></li>
+    </ul>
+</nav>
+    
+
+   <main>
+        <header>
+    <h1>Roger's Family</h1>
+  </header>
+     
+       <article>
+
+    <main>
+
+<section id="rogers-family">
+  <h3>Stay Tuned</h3>
+  <p>
+    Coming Soon
+  </p>
+
+
+
+
+</section>
+
+
+       </article>
+    </main>
+
+   </div>
+    <footer>
+        <p>Family History Project - SchreinerFamily | Info compiled by Roger Schreiner (2008) | Website by Megan (Schreiner) Hubbard</p>
+    </footer>
+
+<div id="lb-overlay" aria-modal="true" role="dialog" aria-hidden="true">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <img alt="">
+</div>
+
+       <script>
+(function() {
+  const overlay = document.getElementById('lb-overlay');
+  const bigImg  = overlay.querySelector('img');
+  const closeBtn= overlay.querySelector('.lb-close');
+
+  function open(src, alt) {
+    bigImg.src = src; bigImg.alt = alt || '';
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+    bigImg.src = ''; document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('img[data-full]');
+    if (!t) return;
+    e.preventDefault();
+    open(t.getAttribute('data-full') || t.src, t.alt);
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close(); // click backdrop
+  });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+    
+</body>
+</html>
